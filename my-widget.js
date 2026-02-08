@@ -10,6 +10,9 @@ class MyWidget extends HTMLElement {
   attributeChangedCallback() { this.render(); }
 
   render() {
+    if(!this.config){
+      this.config=JSON.parse(this.getAttribute('config')||'{}');
+    }
     const title = this.config.title ?? "Hello";
     this.shadowRoot.innerHTML = `
       <style>
