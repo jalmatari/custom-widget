@@ -10,7 +10,7 @@ class MyWidget extends HTMLElement {
   attributeChangedCallback() { this.render(); }
 
   render() {
-    const title = this.getAttribute("title") ?? "Hello";
+    const title = this.config.title ?? "Hello";
     this.shadowRoot.innerHTML = `
       <style>
         :host { display:block; font-family: system-ui; }
@@ -19,7 +19,7 @@ class MyWidget extends HTMLElement {
       </style>
       <div class="box">
         <h3>${title}</h3>
-        <slot></slot>
+        <pre>${JSON.stringify(this.config)}</pre>
       </div>
     `;
   }
